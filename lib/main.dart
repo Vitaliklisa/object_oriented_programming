@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 //  int _number = 0;
-  Counter _counter = Counter(1);
+  Counter _counter = Counter(0);
 
   void _incrementCounter() {
     setState(() {
@@ -41,9 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counters without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      //  _counters+=2;
       //   _number = _number + 2;
-      _counter = Counter(0);
+      //_counter = Counter(1);
+      _counter = _counter.copyWith(number: _counter.number + 1.0);
+      //int number = _counter.number;
+      // number = number + 1;
+      //_counter.number = _counter.number + 500.0;
     });
   }
 
@@ -78,7 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class Counter {
+  //constructor
   const Counter(this.number);
+  //Counter(this.number);
 
-  final int number;
+  //final int number;
+  final double number;
+  Counter copyWith({double? number}) {
+    return Counter(number ?? this.number);
+  }
 }
